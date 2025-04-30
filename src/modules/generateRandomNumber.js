@@ -20,7 +20,7 @@ function generateRandomNumber() {
     }
   }
 
-  return +res;
+  return Number(res);
 }
 
 module.exports = {

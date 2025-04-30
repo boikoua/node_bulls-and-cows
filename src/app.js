@@ -27,22 +27,21 @@ function game() {
   terminal.question(
     'Try to guess 4 random digits. Enter your answer? ',
     (userInput) => {
-      const checkResult = checkAnswer(userInput);
+      try {
+        const checkResult = checkAnswer(userInput);
 
-      if (!checkResult) {
+        if (checkResult.isWin) {
+          terminal.write('You are champions!!! You guessed all numbers');
+          terminal.close();
+        } else {
+          terminal.write(
+            `You guessed only ${checkResult.bulls} and ${checkResult.cows}`,
+          );
+          game();
+        }
+      } catch (error) {
         terminal.write(
           'You should type only 4 digits, without 0 in start position',
-        );
-
-        game();
-      }
-
-      if (checkResult.isWin) {
-        terminal.write('You are champions!!! You guessed all numbers');
-        terminal.close();
-      } else {
-        terminal.write(
-          `You guessed only ${checkAnswer.bulls} and ${checkAnswer.cows}`,
         );
         game();
       }
