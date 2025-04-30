@@ -9,7 +9,7 @@ const terminal = readline.createInterface({
   output: process.stdout,
 });
 
-const numberToGuess = generateRandomNumber();
+const numberToGuess = generateRandomNumber().toString();
 
 function checkAnswer(userInput) {
   if (!checkIsValidUserInput(userInput)) {
